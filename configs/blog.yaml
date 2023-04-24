@@ -1,0 +1,21 @@
+# Copyright 2022 Innkeeper Belm(梁广庆) &lt;138521257@qq.com>. All rights reserved.
+# Use of this source code is governed by a MIT style
+# license that can be found in the LICENSE file. The original repo for
+# this file is https://github.com/guangqingliang/blog
+db:
+  host: 175.24.205.77
+  username: bloglog
+  password: blog1234
+  database: bloglog
+  max-idle-connections: 100
+  max-open-connections: 100
+  max-connection-life-time: 10s
+  log-level: 4
+
+# 日志配置
+log:
+  disable-caller: false
+  disable-stacktrace: false
+  level: debug
+  format: console
+  output-paths: [/tmp/blog.log, stdout]

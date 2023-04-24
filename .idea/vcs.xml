@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2022 Innkeeper Belm(梁广庆) &lt;138521257@qq.com>. All rights reserved.
+ Use of this source code is governed by a MIT style
+ license that can be found in the LICENSE file. The original repo for
+ this file is https://github.com/guangqingliang/blog
+-->
+
+
+<!--
+ @Author: [梁广庆]
+ @Date: [%Y/%m/%d %T%n]
+ @LastEditors: [最后编辑者]
+ @LastEditTime: [最后编辑时间]
+ @Description: [文件描述]
+-->
+
+
+<!--
+ /*
+  * @Author: [梁广庆]
+  * @Date: [* @Date: %s\n *]
+  * @LastEditors: [最后编辑者]
+  * @LastEditTime: [最后编辑时间]
+  * @Description: [文件描述]
+  */
+-->
+
+
+<!--
+-->
+
+
+<!--
+-->
+
+
+<!--
+-->
+
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
+</project>
