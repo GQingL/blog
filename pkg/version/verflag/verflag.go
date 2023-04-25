@@ -47,7 +47,6 @@ func (v *versionValue) String() string {
 func (v *versionValue) Set(s string) error {
 	if s == strRawVersion {
 		*v = VersionRaw
-
 		return nil
 	}
 

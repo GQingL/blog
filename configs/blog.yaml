@@ -2,6 +2,11 @@
 # Use of this source code is governed by a MIT style
 # license that can be found in the LICENSE file. The original repo for
 # this file is https://github.com/guangqingliang/blog
+
+#通用配置
+runmode: debug
+addr: :8080
+# mysql配置
 db:
   host: 175.24.205.77
   username: bloglog

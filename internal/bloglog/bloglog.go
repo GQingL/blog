@@ -8,9 +8,11 @@ package bloglog
 import (
 	"blog/internal/pkg/log"
 	"blog/pkg/version/verflag"
-	"encoding/json"
+	"errors"
+	"github.com/gin-gonic/gin"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"net/http"
 )
 
 var cfgFile string
@@ -58,10 +60,31 @@ func NewBlogCommand() *cobra.Command {
 
 // run函数实际是业务代码入口函数
 func run() error {
-	// 打印所有的配置项及其值
-	settings, _ := json.Marshal(viper.AllSettings())
-	log.Infow(string(settings))
-	// 打印 db 配置项的值
-	log.Infow(viper.GetString("db.password"))
+	// 设置gin模式
+	gin.SetMode(viper.GetString("runmode"))
+	// 创建gin引擎
+	g := gin.New()
+
+	// 注册404 handler
+	g.NoRoute(func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"code": 10003,
+			"message": "Page not found"})
+	})
+
+	// 注册/health handler
+	g.GET("/health", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"status": "ok"})
+	})
+	// 创建http server实例
+	httpsrv := &http.Server{
+		Addr:    viper.GetString("addr"),
+		Handler: g,
+	}
+	// 运行http服务器
+	// 打印一条日志 用来提示服务已经起来，方便排除障碍
+	log.Infow("start to listening the incoming requests on http address", viper.GetString("addr"))
+	if err := httpsrv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+		log.Fatalw(err.Error())
+	}
 	return nil
 }
